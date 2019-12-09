@@ -3,6 +3,7 @@
 #include <string.h>
 #include "scanner/scanner.h"
 #include "parser/parser.h"
+#include "interpreter/value/value.h"
 #include "interpreter/interpreter.h"
 #include "utils/utils.h"
 
@@ -30,23 +31,20 @@ int main (void)
 
         // print_ast(ast);
 
-        init_interpreter();
-
         value_t result = interpret_ast(ast);
 
         switch (result.type)
         {
             case TYPE_NUMBER:
-                printf("%lf\n", *((double*) result.value));
+                printf("%lf\n", result.value.number);
                 break;
             case TYPE_BOOL:
-                printf(*((bool*) result.value) ? "true\n" : "false\n"); 
+                printf(result.value.boolean ? "true\n" : "false\n"); 
             default:
                 break;
         }
 
         destroy_ast(ast);
-        destroy_interpreter();
         free(program);
         free(tokens);
     }
