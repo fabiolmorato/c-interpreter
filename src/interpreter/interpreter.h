@@ -4,7 +4,7 @@
 #include "../parser/parser.h"
 
 typedef enum {
-    TYPE_NUMBER,
+    TYPE_NUMBER, TYPE_BOOL, TYPE_NAN,
 
     TYPE_NIL,
     TYPE_ERROR
