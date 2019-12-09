@@ -17,7 +17,7 @@ void init_scanner (const char* program)
 {
     scanner.start = program;
     scanner.current = program;
-    scanner.line = 1;
+    if (scanner.line == 0) scanner.line = 1;
 }
 
 /*
@@ -171,7 +171,7 @@ static token_type_t decide_keyword_type (unsigned start, unsigned length, const 
  */
 static token_type_t decide_identifier_type (void)
 {
-    switch (*scanner.start)
+    switch (scanner.start[0])
     {
         case 'a': return decide_keyword_type(1, 2, "nd", TOKEN_AND);
         case 'c': return decide_keyword_type(1, 4, "lass", TOKEN_CLASS);
@@ -186,7 +186,7 @@ static token_type_t decide_identifier_type (void)
         case 'w': return decide_keyword_type(1, 4, "hile", TOKEN_WHILE);
 
         case 'f':
-            switch (peek_next())
+            switch (scanner.start[1])
             {
                 case 'a': return decide_keyword_type(2, 3, "lse", TOKEN_FALSE);
                 case 'o': return decide_keyword_type(2, 1, "r", TOKEN_FOR);
@@ -195,7 +195,7 @@ static token_type_t decide_identifier_type (void)
             break;
         
         case 't':
-            switch (peek_next())
+            switch (scanner.start[1])
             {
                 case 'h': return decide_keyword_type(2, 2, "is", TOKEN_THIS);
                 case 'r': return decide_keyword_type(2, 2, "ue", TOKEN_TRUE);

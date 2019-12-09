@@ -28,6 +28,8 @@ int main (void)
             continue;
         }
 
+        // print_ast(ast);
+
         init_interpreter();
 
         value_t result = interpret_ast(ast);
@@ -37,6 +39,8 @@ int main (void)
             case TYPE_NUMBER:
                 printf("%lf\n", *((double*) result.value));
                 break;
+            case TYPE_BOOL:
+                printf(*((bool*) result.value) ? "true\n" : "false\n"); 
             default:
                 break;
         }

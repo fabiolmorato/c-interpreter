@@ -27,6 +27,36 @@ static void __print_ast (ast_t root, int level)
         case NODE_STAR:
             printf("*\n");
             break;
+        case NODE_BANG:
+            printf("!\n");
+            break;
+        case NODE_BANG_EQUAL:
+            printf("!=\n");
+            break;
+        case NODE_EQUAL_EQUAL:
+            printf("==\n");
+            break;
+        case NODE_GREATER:
+            printf(">\n");
+            break;
+        case NODE_GREATER_EQUAL:
+            printf(">=\n");
+            break;
+        case NODE_LESS:
+            printf("<\n");
+            break;
+        case NODE_LESS_EQUAL:
+            printf("<=\n");
+            break;
+        case NODE_BOOL:
+            printf(*((bool*) root->value) ? "true\n" : "false\n");
+            break;
+        case NODE_AND:
+            printf("and\n");
+            break;
+        case NODE_OR:
+            printf("or\n");
+            break;
         case NODE_NUMBER:
             ;double value = *((double*) root->value);
             printf("%lf\n", value);
