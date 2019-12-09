@@ -31,6 +31,6 @@ The interpreter does implicit conversions. In cases where a number is expected b
 
 ### Credits
 
-I'm writing this project based on [http://craftinginterpreters.com/](Crafting Interpreters) free book. It's a great book on this topic and I definitely recommend it.
+I'm writing this project based on [Crafting Interpreters](http://craftinginterpreters.com/) free book. It's a great book on this topic and I definitely recommend it.
 
 It's the first time I've ever written an interpreter. There might be lots of errors in this project.
